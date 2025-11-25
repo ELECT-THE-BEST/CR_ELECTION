@@ -134,7 +134,7 @@ Our **CR Election System** addresses all the above problems with a modern, secur
 ### **Application Interface Walkthrough**
 
 #### **1. Landing Page (index.html)**
-![Homepage Interface](https://raw.githubusercontent.com/ELECT-THE-BEST/CR_ELECTION/main/screenshots/homepage_interface.png)
+![Homepage Interface](https://github.com/ELECT-THE-BEST/CR_ELECTION/blob/main/readmefile_images/index.png)
 
 The landing page features a futuristic design with:
 - **Hero Section**: Bold typography with "SEE WHAT'S HAPPENING" and "DECIDE WHAT HAPPENS NEXT"
@@ -146,7 +146,7 @@ The landing page features a futuristic design with:
 ---
 
 #### **2. Student Authentication (studentAuth.html)**
-![Student Auth Page](https://raw.githubusercontent.com/ELECT-THE-BEST/CR_ELECTION/main/screenshots/student_auth_page.png)
+![Student Auth Page](https://github.com/ELECT-THE-BEST/CR_ELECTION/blob/main/readmefile_images/studentauth.png)
 
 Clean authentication interface featuring:
 - **SIC Input Field**: Students enter their unique Student Identification Code
@@ -157,8 +157,7 @@ Clean authentication interface featuring:
 ---
 
 #### **3. Admin Authentication (adminauth.html)**
-![Admin Auth Page](https://raw.githubusercontent.com/ELECT-THE-BEST/CR_ELECTION/main/screenshots/admin_auth_page.png)
-
+![Admin Auth Page]
 Secure admin login portal with:
 - **Username & Password Fields**: Protected admin access
 - **Authentication Protocol**: Secure credential verification
@@ -168,7 +167,7 @@ Secure admin login portal with:
 ---
 
 #### **4. Admin Dashboard (admin.html)**
-![Admin Dashboard](https://raw.githubusercontent.com/ELECT-THE-BEST/CR_ELECTION/main/screenshots/admin_dashboard.png)
+![Admin Dashboard](https://github.com/ELECT-THE-BEST/CR_ELECTION/blob/main/readmefile_images/admin.png)
 
 Comprehensive management interface featuring:
 - **Action Buttons**: IMPORT EXCEL, ADD CANDIDATE, VIEW RESULTS, PROMOTE, RESET, DELETE DATA
@@ -188,7 +187,7 @@ Comprehensive management interface featuring:
 ---
 
 #### **5. Voting Interface (voting.html)**
-![Voting Interface](https://raw.githubusercontent.com/ELECT-THE-BEST/CR_ELECTION/main/screenshots/voting_interface.png)
+![Voting Interface](https://github.com/ELECT-THE-BEST/CR_ELECTION/blob/main/readmefile_images/voting.png)
 
 Student voting portal with:
 - **Student Info Panel**: Displays logged-in student's details (Name, SIC, Section)
@@ -209,7 +208,7 @@ Student voting portal with:
 ---
 
 #### **6. Winner Certificate (Results Display)**
-![Winner Certificate](https://raw.githubusercontent.com/ELECT-THE-BEST/CR_ELECTION/main/screenshots/winner_certificate.png)
+![Winner Certificate](https://github.com/ELECT-THE-BEST/CR_ELECTION/blob/main/readmefile_images/Certificate.jpg)
 
 Professional results display featuring:
 - **Winner Announcement**: Prominent display of election winner
