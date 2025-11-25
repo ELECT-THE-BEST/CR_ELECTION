@@ -62,6 +62,13 @@
             sqlCandidates = "DELETE FROM candidates";
         }
         
+        // Log the SQL for debugging
+        jsonResponse.put("debug_sql_students", sqlStudents);
+        jsonResponse.put("debug_sql_candidates", sqlCandidates);
+        jsonResponse.put("debug_branch", branch);
+        jsonResponse.put("debug_section", section);
+        jsonResponse.put("debug_year", year);
+        
         // Execute deletion for students
         pstmtStudents = conn.prepareStatement(sqlStudents);
         if (hasFilters) {
@@ -73,7 +80,13 @@
                 pstmtStudents.setString(paramIndex++, section);
             }
             if (year != null && !year.trim().isEmpty()) {
-                pstmtStudents.setString(paramIndex++, year);
+                try {
+                    int yearInt = Integer.parseInt(year);
+                    pstmtStudents.setInt(paramIndex++, yearInt);
+                    jsonResponse.put("debug_year_parsed", yearInt);
+                } catch (NumberFormatException nfe) {
+                    throw new Exception("Invalid year format: " + year + ". Year must be a number.");
+                }
             }
         }
         int studentsDeleted = pstmtStudents.executeUpdate();
@@ -89,7 +102,8 @@
                 pstmtCandidates.setString(paramIndex++, section);
             }
             if (year != null && !year.trim().isEmpty()) {
-                pstmtCandidates.setString(paramIndex++, year);
+                int yearInt = Integer.parseInt(year);
+                pstmtCandidates.setInt(paramIndex++, yearInt);
             }
         }
         int candidatesDeleted = pstmtCandidates.executeUpdate();
@@ -122,6 +136,8 @@
         
         jsonResponse.put("success", false);
         jsonResponse.put("message", "Error deleting data: " + e.getMessage());
+        jsonResponse.put("error_type", e.getClass().getName());
+        jsonResponse.put("error_stack", e.toString());
         e.printStackTrace();
     } finally {
         // Close resources
