@@ -336,14 +336,6 @@
         font-size: 16px;
       }
 
-      .form-hint {
-        font-size: 11px;
-        color: #606060;
-        margin-top: 8px;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-      }
-
       .btn-login {
         width: 100%;
         padding: 18px;
@@ -495,30 +487,6 @@
         }
       }
 
-      /* Loading State */
-      .btn-login.loading {
-        pointer-events: none;
-        opacity: 0.7;
-      }
-
-      .btn-login.loading .btn-text::after {
-        content: "";
-        display: inline-block;
-        width: 12px;
-        height: 12px;
-        margin-left: 10px;
-        border: 2px solid #0a0e12;
-        border-top-color: transparent;
-        border-radius: 50%;
-        animation: spin 0.6s linear infinite;
-      }
-
-      @keyframes spin {
-        to {
-          transform: rotate(360deg);
-        }
-      }
-
       @media (max-width: 600px) {
         .login-container {
           width: 90%;
@@ -579,26 +547,23 @@
         <div class="status-item">
           <div class="status-indicator">
             <div class="status-dot"></div>
-            <span>REGISTERED VOTERS</span>
+            <span>TOTAL REGISTERED VOTERS</span>
           </div>
           <span class="status-value">500</span>
-        </div>
-        <div class="status-item">
-          <div class="status-indicator">
-            <div class="status-dot"></div>
-            <span>TIME REMAINING</span>
-          </div>
-          <span class="status-value">48:00:00</span>
         </div>
       </div>
 
       <!-- Error Message -->
       <div class="error-message" id="errorMessage">
-        ⚠ Invalid credentials - check SIC and password
+        ⚠ Student not found - Please check your SIC
+      </div>
+      
+      <div class="error-message" id="alreadyVotedMessage" style="background: rgba(255, 193, 7, 0.1); border-color: rgba(255, 193, 7, 0.3); color: #ffc107;">
+        🚫 You have already cast your vote and cannot vote again. If you believe this is an error, please contact the admin.
       </div>
 
       <!-- Login Form -->
-      <form class="login-form" id="loginForm" onsubmit="handleLogin(event)">
+      <form class="login-form" id="loginForm" action="authenticateStudent.jsp" method="POST">
         <div class="form-group">
           <label class="form-label">STUDENT ID CODE (SIC)</label>
           <div class="form-input-wrapper">
@@ -608,27 +573,12 @@
               class="form-input"
               placeholder="Enter SIC"
               id="sic"
+              name="sic"
               required
-              maxlength="15"
+              maxlength="50"
               style="text-transform: none"
             />
           </div>
-        </div>
-
-        <div class="form-group">
-          <label class="form-label">STUDENT PASSWORD</label>
-          <div class="form-input-wrapper">
-            <span class="input-icon">🔑</span>
-            <input
-              type="password"
-              class="form-input"
-              placeholder="Enter password"
-              id="password"
-              required
-              style="text-transform: none"
-            />
-          </div>
-          <div class="form-hint">Enter your registered password</div>
         </div>
 
         <button type="submit" class="btn-login" id="loginBtn">
@@ -640,84 +590,25 @@
       <div class="login-footer">
         <p class="footer-text">
           Don't know your SIC? Contact
-          <a href="#" class="footer-link">registrar</a>
+          <a href="#" class="footer-link">admin</a>
         </p>
         <p class="footer-text" style="margin-top: 10px">
-          <a href="#" class="footer-link">← Back to home</a>
+          <a href="index.html" class="footer-link">← Back to home</a>
         </p>
       </div>
     </div>
 
     <script>
-      function handleLogin(event) {
-        event.preventDefault();
-
-        const loginBtn = document.getElementById("loginBtn");
-        const errorMessage = document.getElementById("errorMessage");
-        const sic = document.getElementById("sic").value.trim();
-        const password = document.getElementById("password").value;
-
-        // Hide error message
-        errorMessage.classList.remove("show");
-
-        // Add loading state
-        loginBtn.classList.add("loading");
-        loginBtn.querySelector(".btn-text").textContent = "VERIFYING";
-
-        // Simulate authentication
-        setTimeout(() => {
-          // Validate SIC format (e.g., 2025-A-047, 2025-B-123, 2025-C-089)
-
-          // Hardcoded demo credentials: SIC = "23bcsd95", password = "1234"
-          if (sic.toLowerCase() === "23bcsd95" && password === "1234") {
-            loginBtn.querySelector(".btn-text").textContent = "ACCESS GRANTED";
-
-            setTimeout(() => {
-              // Redirect to voting page
-              window.location.href = "voting.html";
-            }, 500);
-          } else {
-            // Show error
-            errorMessage.classList.add("show");
-            loginBtn.classList.remove("loading");
-            loginBtn.querySelector(".btn-text").textContent =
-              "ACCESS VOTING SYSTEM";
-
-            // Shake animation
-            loginBtn.style.animation = "shake 0.5s";
-            setTimeout(() => {
-              loginBtn.style.animation = "";
-            }, 500);
-          }
-        }, 1500);
+      // Check for error parameter in URL
+      const urlParams = new URLSearchParams(window.location.search);
+      if (urlParams.get('error') === 'notfound') {
+        document.getElementById('errorMessage').classList.add('show');
+      } else if (urlParams.get('error') === 'alreadyvoted') {
+        document.getElementById('alreadyVotedMessage').classList.add('show');
       }
 
-      // Add shake animation
-      const style = document.createElement("style");
-      style.textContent = `
-            @keyframes shake {
-                0%, 100% { transform: translateX(0); }
-                25% { transform: translateX(-10px); }
-                75% { transform: translateX(10px); }
-            }
-        `;
-      document.head.appendChild(style);
-
-      // SIC input formatting removed to keep plain text entry
-
-      // Enter key submit
-      const inputs = document.querySelectorAll(".form-input");
-      inputs.forEach((input) => {
-        input.addEventListener("keypress", function (e) {
-          if (e.key === "Enter") {
-            document
-              .getElementById("loginForm")
-              .dispatchEvent(new Event("submit"));
-          }
-        });
-      });
-
       // Add focus effect
+      const inputs = document.querySelectorAll(".form-input");
       inputs.forEach((input) => {
         input.addEventListener("focus", function () {
           this.parentElement.parentElement.querySelector(
@@ -732,6 +623,13 @@
             ).style.color = "#8ab452";
           }
         });
+      });
+      
+      // Add ESC key listener to redirect to index.html
+      document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape' || event.key === 'Esc') {
+          window.location.href = 'index.html';
+        }
       });
     </script>
   </body>

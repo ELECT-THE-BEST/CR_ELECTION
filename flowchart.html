@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CR Election Flowchart</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <style>
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            padding: 40px; 
+            background: #f4f6f8; 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h1 { color: #2c3e50; margin-bottom: 30px; }
+        .diagram-container { 
+            background: white; 
+            padding: 40px; 
+            border-radius: 15px; 
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1); 
+            max-width: 100%;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>CR Election System Architecture</h1>
+    <div class="diagram-container">
+        <div class="mermaid">
+graph TD
+    %% Styles
+    classDef page fill:#e1f5fe,stroke:#01579b,stroke-width:2px,color:#01579b;
+    classDef backend fill:#fff3e0,stroke:#e65100,stroke-width:2px,color:#e65100;
+    classDef db fill:#e8f5e9,stroke:#1b5e20,stroke-width:2px,color:#1b5e20;
+    classDef decision fill:#fce4ec,stroke:#880e4f,stroke-width:2px,color:#880e4f;
+    classDef script fill:#f3e5f5,stroke:#4a148c,stroke-width:2px,color:#4a148c;
+
+    %% Nodes
+    Start((User Visits<br>index.html)):::page
+    
+    %% Landing Page
+    Start -->|Click 'START VOTING'| StudentAuth[Page: studentAuth.html]:::page
+    Start -->|Click 'ADMIN'| AdminAuth[Page: adminauth.html]:::page
+
+    %% Student Flow
+    subgraph Student_Portal [Student Portal]
+        StudentAuth -->|Enter SIC & Submit| AuthJSP[Backend: authenticateStudent.jsp]:::backend
+        
+        AuthJSP -->|Query DB: students table| DB_Check_Student{Student Exists?}:::decision
+        
+        DB_Check_Student -- No --> RedirectNotFound[Redirect: studentAuth.html?error=notfound]:::page
+        RedirectNotFound --> StudentAuth
+        
+        DB_Check_Student -- Yes --> CheckVoted{Already Voted?}:::decision
+        
+        CheckVoted -- Yes --> RedirectVoted[Redirect: studentAuth.html?error=alreadyvoted]:::page
+        RedirectVoted --> StudentAuth
+        
+        CheckVoted -- No --> CreateSession[Create Session<br>Store: SIC, Name, Branch, Section]:::backend
+        CreateSession --> VotingPage[Page: voting.html]:::page
+        
+        VotingPage -->|On Load| LoadCandidatesScript[script.js: loadCandidates]:::script
+        LoadCandidatesScript -->|Fetch| GetCandJSP[Backend: getCandidates.jsp]:::backend
+        GetCandJSP -->|Return JSON| VotingPage
+        
+        VotingPage -->|Click 'VOTE'| CastVoteScript[script.js: castVote]:::script
+        CastVoteScript -->|POST| CastVoteJSP[Backend: castVote.jsp]:::backend
+        
+        CastVoteJSP -->|Verify Session & Candidate Class| ValidateVote{Valid Vote?}:::decision
+        
+        ValidateVote -- No --> VoteError[Return Error JSON]:::backend
+        ValidateVote -- Yes --> UpdateDB_Vote[Update DB:<br>1. candidates: votes + 1<br>2. students: isVoted = 1]:::db
+        UpdateDB_Vote --> VoteSuccess[Return Success JSON]:::backend
+        VoteSuccess --> VotingPage
+        VotingPage -->|UI Update| DisableVoting[Disable Buttons & Show Success]:::page
+    end
+
+    %% Admin Flow
+    subgraph Admin_Portal [Admin Portal]
+        AdminAuth -->|Enter ID/Pass| JS_Auth{Validate Credentials<br>ID: 2323 / Pass: 1234}:::script
+        JS_Auth -- Invalid --> ShakeError[Show Error Animation]:::page
+        JS_Auth -- Valid --> AdminPage[Page: admin.html]:::page
+        
+        %% Admin Actions
+        AdminPage -->|Tab: Candidates| ViewCandidates[View Candidate List]:::page
+        ViewCandidates -->|Filter Change| GetCandJSP_Admin[Backend: getCandidates.jsp]:::backend
+        
+        AdminPage -->|Action: Add Candidate| AddModal[Modal: Add Candidate]:::page
+        AddModal -->|Input SIC| GetStudentJSP[Backend: getStudentBySic.jsp]:::backend
+        GetStudentJSP -->|Return Details| AddModal
+        AddModal -->|Submit| RegCandJSP[Backend: registerCandidate.jsp]:::backend
+        RegCandJSP -->|Insert| DB_Candidates_Insert[(DB: candidates)]:::db
+        
+        AdminPage -->|Action: Delete Candidate| DelCandJSP[Backend: deleteCandidate.jsp]:::backend
+        DelCandJSP -->|Delete| DB_Candidates_Del[(DB: candidates)]:::db
+        
+        AdminPage -->|Action: Reset Database| ResetJSP[Backend: resetDatabase.jsp]:::backend
+        ResetJSP -->|Update| DB_Reset[DB: students isVoted=0<br>DB: DELETE FROM candidates]:::db
+        
+        AdminPage -->|Action: Promote Students| PromoteJSP[Backend: promoteStudents.jsp]:::backend
+        PromoteJSP -->|Update| DB_Promote[DB: students year = year + 1]:::db
+        
+        AdminPage -->|Action: View Results| WinnerJSP[Backend: getWinner.jsp]:::backend
+        WinnerJSP -->|Calculate| ShowWinner[Display Winner / Tie Breaker]:::page
+    end
+
+    %% Database
+    subgraph Database [MySQL Database]
+        DB_Students[(Table: students)]:::db
+        DB_Candidates[(Table: candidates)]:::db
+    end
+
+    %% Connections to DB
+    AuthJSP -.-> DB_Students
+    CastVoteJSP -.-> DB_Students
+    CastVoteJSP -.-> DB_Candidates
+    GetCandJSP -.-> DB_Candidates
+    GetStudentJSP -.-> DB_Students
+    RegCandJSP -.-> DB_Candidates_Insert
+    DelCandJSP -.-> DB_Candidates_Del
+    ResetJSP -.-> DB_Reset
+    PromoteJSP -.-> DB_Promote
+    WinnerJSP -.-> DB_Candidates
+        </div>
+    </div>
+    <script>
+        mermaid.initialize({ startOnLoad: true, theme: 'default' });
+    </script>
+</body>
+</html>

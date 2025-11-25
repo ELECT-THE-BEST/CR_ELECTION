@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ADMIN CONTROL SYSTEM // CR ELECTION</title>
+    <title>ElectTheBest</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700;800;900&display=swap');
 
@@ -89,8 +90,15 @@
         }
 
         @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.3; }
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.3;
+            }
         }
 
         .btn-small {
@@ -109,6 +117,27 @@
         }
 
         .btn-small:hover {
+            background: rgba(255, 71, 87, 0.1);
+            border-color: #ff4757;
+            color: #ff4757;
+        }
+
+        .btn-import-excel {
+            padding: 10px 20px;
+            background: transparent;
+            border: 1px solid #8ab452;
+            color: #8ab452;
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            clip-path: polygon(6px 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%, 0 6px);
+        }
+
+        .btn-import-excel:hover {
             background: #8ab452;
             color: #0a0e12;
             box-shadow: 0 0 15px rgba(138, 180, 82, 0.5);
@@ -158,7 +187,7 @@
         /* Stats Grid */
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(3, 1fr);
             gap: 25px;
             margin-bottom: 40px;
         }
@@ -203,7 +232,7 @@
         /* Content Grid */
         .content-grid {
             display: grid;
-            grid-template-columns: 2fr 1fr;
+            grid-template-columns: 1fr;
             gap: 25px;
             margin-bottom: 40px;
         }
@@ -346,102 +375,6 @@
             border-color: #ff4757;
         }
 
-        /* Results Table */
-        .results-table {
-            width: 100%;
-        }
-
-        .table-header {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 2fr;
-            gap: 20px;
-            padding: 15px 20px;
-            background: rgba(138, 180, 82, 0.05);
-            border: 1px solid rgba(138, 180, 82, 0.2);
-            margin-bottom: 10px;
-            clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
-        }
-
-        .table-header span {
-            font-size: 11px;
-            color: #8ab452;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-weight: 700;
-        }
-
-        .table-row {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 2fr;
-            gap: 20px;
-            padding: 20px;
-            background: rgba(138, 180, 82, 0.03);
-            border: 1px solid rgba(138, 180, 82, 0.15);
-            margin-bottom: 10px;
-            align-items: center;
-            transition: all 0.3s ease;
-            clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
-        }
-
-        .table-row:hover {
-            border-color: #8ab452;
-            background: rgba(138, 180, 82, 0.05);
-        }
-
-        .table-row span {
-            font-size: 14px;
-            color: #ffffff;
-        }
-
-        .progress-bar {
-            width: 100%;
-            height: 8px;
-            background: rgba(138, 180, 82, 0.1);
-            position: relative;
-            clip-path: polygon(3px 0, 100% 0, 100% calc(100% - 3px), calc(100% - 3px) 100%, 0 100%, 0 3px);
-        }
-
-        .progress-fill {
-            height: 100%;
-            background: #8ab452;
-            transition: width 0.5s ease;
-            box-shadow: 0 0 10px rgba(138, 180, 82, 0.5);
-            clip-path: polygon(3px 0, 100% 0, 100% calc(100% - 3px), calc(100% - 3px) 100%, 0 100%, 0 3px);
-        }
-
-        /* Section Filter */
-        .filter-group {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 25px;
-        }
-
-        .filter-btn {
-            padding: 12px 25px;
-            background: transparent;
-            border: 1px solid rgba(138, 180, 82, 0.3);
-            color: #606060;
-            font-family: 'Rajdhani', sans-serif;
-            font-size: 12px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            clip-path: polygon(6px 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%, 0 6px);
-        }
-
-        .filter-btn.active {
-            background: #8ab452;
-            color: #0a0e12;
-            border-color: #8ab452;
-        }
-
-        .filter-btn:hover {
-            border-color: #8ab452;
-            color: #8ab452;
-        }
-
         /* Control Panel */
         .control-grid {
             display: grid;
@@ -576,19 +509,17 @@
         .form-select {
             width: 100%;
             padding: 15px;
-            background: rgba(138, 180, 82, 0.05);
-            border: 1px solid rgba(138, 180, 82, 0.2);
-            color: #ffffff;
-            font-family: 'Rajdhani', sans-serif;
+            background: #8ab452;
+            border: none;
+            color: #0a0e12;
+            font-family: 'Orbitron', sans-serif;
             font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
             cursor: pointer;
             transition: all 0.3s ease;
-            clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
-        }
-
-        .form-select:focus {
-            outline: none;
-            border-color: #8ab452;
+            clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
         }
 
         .btn-submit {
@@ -612,6 +543,12 @@
             box-shadow: 0 0 20px rgba(138, 180, 82, 0.5);
         }
 
+        .form-select option {
+            background: #0f1419;
+            color: #ffffff;
+            padding: 10px;
+        }
+
         @media (max-width: 1400px) {
             .content-grid {
                 grid-template-columns: 1fr;
@@ -626,14 +563,484 @@
             .control-grid {
                 grid-template-columns: 1fr;
             }
+        }
 
-            .table-header, .table-row {
-                grid-template-columns: 1fr;
-                gap: 10px;
+        /* Certificate Display Styles */
+        .certificate-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: radial-gradient(ellipse at center, #0a1a0f 0%, #000000 100%);
+            z-index: 9999;
+            overflow: auto;
+            padding: 20px;
+        }
+
+        .certificate-overlay.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Animated circuit background */
+        .certificate-overlay::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(138, 180, 82, 0.03) 2px, rgba(138, 180, 82, 0.03) 4px),
+                repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(138, 180, 82, 0.03) 2px, rgba(138, 180, 82, 0.03) 4px);
+            animation: circuitMove 20s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes circuitMove {
+            0% { background-position: 0 0; }
+            100% { background-position: 50px 50px; }
+        }
+
+        .countdown-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: 10000;
+        }
+
+        .countdown-number {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 200px;
+            font-weight: 900;
+            color: #8ab452;
+            text-shadow: 
+                0 0 20px rgba(138, 180, 82, 1),
+                0 0 40px rgba(138, 180, 82, 0.8),
+                0 0 60px rgba(138, 180, 82, 0.6),
+                0 0 80px rgba(138, 180, 82, 0.4);
+            animation: countdownPulse 1s ease-in-out;
+        }
+
+        @keyframes countdownPulse {
+            0% {
+                transform: scale(0.5);
+                opacity: 0;
             }
+            50% {
+                transform: scale(1.2);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .certificate-container {
+            display: none;
+            position: relative;
+            width: 95%;
+            max-width: 900px;
+            max-height: 90vh;
+            background: linear-gradient(135deg, #0a1410 0%, #0f1a15 50%, #0a1410 100%);
+            border: 3px solid #8ab452;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 
+                0 0 60px rgba(138, 180, 82, 0.6),
+                inset 0 0 60px rgba(138, 180, 82, 0.05),
+                0 0 100px rgba(138, 180, 82, 0.3);
+            overflow: hidden;
+        }
+
+        .certificate-container.active {
+            display: block;
+            animation: certificateReveal 1s ease-out;
+        }
+
+        /* Decorative tech corners */
+        .certificate-container::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            bottom: 10px;
+            border: 1px solid rgba(138, 180, 82, 0.3);
+            border-radius: 15px;
+            pointer-events: none;
+        }
+
+        /* Corner decorations - top left */
+        .certificate-container::after {
+            content: '';
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            width: 60px;
+            height: 60px;
+            border-left: 2px solid #8ab452;
+            border-top: 2px solid #8ab452;
+            border-radius: 10px 0 0 0;
+        }
+
+        @keyframes certificateReveal {
+            0% {
+                transform: scale(0.5);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .certificate-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid rgba(138, 180, 82, 0.3);
+            position: relative;
+        }
+
+        /* Logo with circuit chip design */
+        .certificate-logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 12px;
+            font-weight: 700;
+            color: #8ab452;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 8px;
+        }
+
+        .certificate-subtitle {
+            font-size: 10px;
+            color: #8ab452;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .certificate-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 32px;
+            font-weight: 900;
+            color: #ffffff;
+            text-transform: uppercase;
+            letter-spacing: 6px;
+            margin: 15px 0 10px 0;
+            text-shadow: 0 0 20px rgba(138, 180, 82, 0.3);
+        }
+
+        .certificate-body {
+            display: grid;
+            grid-template-columns: 240px 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        /* Photo frame with tech border */
+        .photo-frame {
+            position: relative;
+            padding: 12px;
+            background: rgba(138, 180, 82, 0.05);
+            border: 2px solid #8ab452;
+            border-radius: 8px;
+            box-shadow: 
+                0 0 20px rgba(138, 180, 82, 0.3),
+                inset 0 0 20px rgba(138, 180, 82, 0.05);
+        }
+
+        .winner-photo {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            border: 2px solid #8ab452;
+            border-radius: 5px;
+            box-shadow: 0 0 15px rgba(138, 180, 82, 0.2);
+        }
+
+        .winner-details {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .certificate-text {
+            font-size: 15px;
+            color: #e0e0e0;
+            line-height: 1.7;
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        .highlight {
+            color: #8ab452;
+            font-weight: 700;
+            font-family: 'Orbitron', sans-serif;
+            text-transform: uppercase;
+            text-shadow: 0 0 10px rgba(138, 180, 82, 0.4);
+        }
+
+        /* Vote stats with digital display */
+        .vote-stats {
+            background: rgba(0, 0, 0, 0.5);
+            border: 2px solid #8ab452;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+            position: relative;
+            box-shadow: 
+                0 0 25px rgba(138, 180, 82, 0.4),
+                inset 0 0 25px rgba(138, 180, 82, 0.05);
+        }
+
+        .vote-stats::before {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: 15px;
+            right: 15px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #8ab452, transparent);
+        }
+
+        .vote-stats::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 15px;
+            right: 15px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #8ab452, transparent);
+        }
+
+        .vote-stats-label {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 10px;
+            font-weight: 700;
+            color: #8ab452;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+        }
+
+        .vote-number {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 56px;
+            font-weight: 900;
+            color: #8ab452;
+            text-shadow: 
+                0 0 20px rgba(138, 180, 82, 0.8),
+                0 0 40px rgba(138, 180, 82, 0.5);
+            line-height: 1;
+            margin: 8px 0;
+        }
+
+        .certificate-footer {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 25px;
+            border-top: 1px solid rgba(138, 180, 82, 0.3);
+            position: relative;
+        }
+
+        .verified-by {
+            font-size: 11px;
+            color: #808080;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .website-name {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 20px;
+            font-weight: 900;
+            color: #8ab452;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: 0 0 15px rgba(138, 180, 82, 0.5);
+            margin-bottom: 8px;
+        }
+
+        /* Verification badge */
+        .verification-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 15px;
+            padding: 8px 16px;
+            background: rgba(138, 180, 82, 0.1);
+            border: 1px solid #8ab452;
+            border-radius: 20px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 9px;
+            font-weight: 700;
+            color: #8ab452;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .verification-badge::before {
+            content: '✓';
+            width: 18px;
+            height: 18px;
+            background: #8ab452;
+            color: #0a0e12;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 900;
+        }
+
+        .close-certificate {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(255, 71, 87, 0.2);
+            border: 1px solid #ff4757;
+            border-radius: 5px;
+            color: #ff4757;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 8px 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            z-index: 10;
+        }
+
+        .close-certificate:hover {
+            background: #ff4757;
+            color: #0a0e12;
+            box-shadow: 0 0 20px rgba(255, 71, 87, 0.6);
+        }
+
+        /* Confetti Animation */
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background: #8ab452;
+            pointer-events: none;
+            z-index: 10001;
+        }
+
+        @keyframes confettiFall {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 1024px) {
+            .certificate-container {
+                max-width: 85%;
+                padding: 30px;
+            }
+            
+            .certificate-title {
+                font-size: 28px;
+                letter-spacing: 4px;
+            }
+            
+            .certificate-body {
+                grid-template-columns: 200px 1fr;
+                gap: 25px;
+            }
+            
+            .winner-photo {
+                height: 240px;
+            }
+            
+            .vote-number {
+                font-size: 48px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .certificate-container {
+                padding: 25px;
+            }
+            
+            .certificate-body {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .winner-photo {
+                height: 300px;
+            }
+            
+            .certificate-title {
+                font-size: 24px;
+            }
+        }
+
+        /* Tie Breaking Modal */
+        .tie-modal {
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .candidate-cgpa-card {
+            background: rgba(138, 180, 82, 0.05);
+            border: 1px solid rgba(138, 180, 82, 0.2);
+            padding: 20px;
+            margin-bottom: 20px;
+            clip-path: polygon(15px 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%, 0 15px);
+        }
+
+        .cgpa-input-group {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 15px;
+            align-items: end;
+        }
+
+        .checkbox-confirm {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+            padding: 10px;
+            background: rgba(138, 180, 82, 0.1);
+            border-radius: 5px;
+        }
+
+        .checkbox-confirm input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        .checkbox-confirm label {
+            font-size: 12px;
+            color: #ffffff;
+            cursor: pointer;
         }
     </style>
 </head>
+
 <body>
     <!-- Top Bar -->
     <div class="top-bar">
@@ -644,6 +1051,15 @@
                 <div class="status-dot"></div>
                 <span>SYSTEM ONLINE</span>
             </div>
+            <button class="btn-import-excel" onclick="triggerImport()">IMPORT EXCEL</button>
+            <!-- Hidden form for uploading Excel/CSV files -->
+            <form id="uploadForm" action="upload.jsp" method="post" enctype="multipart/form-data" style="display:none;">
+                <input type="file" name="excelFile" id="excelFileInput" accept=".csv,.xlsx,.xls" />
+            </form>
+            <button class="btn-import-excel" onclick="openResultsModal()">RESULTS</button>
+            <button class="btn-small" onclick="openPromoteModal()">PROMOTE</button>
+            <button class="btn-small" onclick="openResetModal()">RESET</button>
+            <button class="btn-small" style="border-color: #ff4757; color: #ff4757;" onclick="openDeleteDataModal()">DELETE DATA</button>
             <button class="btn-small" onclick="window.location.href='index.html'">EXIT</button>
         </div>
     </div>
@@ -653,27 +1069,22 @@
         <!-- Dashboard Header -->
         <div class="dashboard-header">
             <div class="breadcrumb">SYSTEM / <span>CONTROL PANEL</span></div>
-            <h1 class="page-title">COMMAND CENTER</h1>
-            <p class="page-subtitle">Administrative control interface</p>
+            <h1 class="page-title">Admin control</h1>
+            <p class="page-subtitle">COMMAND CENTER</p>
         </div>
 
         <!-- Stats Grid -->
         <div class="stats-grid">
             <div class="stat-card">
                 <div class="stat-label">TOTAL VOTES</div>
-                <div class="stat-value" id="totalVotes">247</div>
-                <div class="stat-change">↑ +23 TODAY</div>
+                <div class="stat-value" id="totalVotes">0</div>
+                <div class="stat-change">DYNAMIC COUNT</div>
             </div>
             <div class="stat-card">
                 <div class="stat-label">CANDIDATES</div>
-                <div class="stat-value" id="totalCandidates">12</div>
-                <div class="stat-change">3 SECTIONS</div>
+                <div class="stat-value" id="totalCandidates">0</div>
+                <div class="stat-change">FILTERED COUNT</div>
             </div>
-            <!-- <div class="stat-card">
-                <div class="stat-label">TURNOUT</div>
-                <div class="stat-value" id="turnout">68<span style="font-size: 24px;">%</span></div>
-                <div class="stat-change">↑ +5% INCREASE</div>
-            </div> -->
             <div class="stat-card">
                 <div class="stat-label">SYSTEM STATUS</div>
                 <div class="stat-value" style="font-size: 28px;">ACTIVE</div>
@@ -688,154 +1099,579 @@
                 <div class="panel-header">
                     <h2 class="panel-title">CANDIDATE REGISTRY</h2>
                     <div class="panel-actions">
-                        <button class="btn-small" onclick="openModal()">+ ADD NEW</button>
+                        <button class="btn-import-excel" onclick="openAddModal()">+ ADD NEW</button>
                     </div>
                 </div>
 
-                <div class="filter-group">
-                    <button class="filter-btn active" onclick="filterSection('A')">SECTION A</button>
-                    <button class="filter-btn" onclick="filterSection('B')">SECTION B</button>
-                    <button class="filter-btn" onclick="filterSection('C')">SECTION C</button>
-                    <button class="filter-btn" onclick="filterSection('ALL')">ALL SECTIONS</button>
+                <!-- Branch Select -->
+                <div class="form-group">
+                    <label class="form-label">BRANCH</label>
+                    <select class="form-select" id="candidateBranch">
+                        <option value="">-- SELECT BRANCH --</option>
+                        <option>CSE</option>
+                        <option>ECE</option>
+                        <option>EEE</option>
+                        <option>EIE</option>
+                        <option>CST</option>
+                        <option>CEN</option>
+                        <option>VLSI</option>
+                        <option>IMCA</option>
+                        <option>MCA</option>
+                        <option>M.Tech CSE</option>
+                        <option>M.Tech ECE</option>
+                        <option>M.Tech PE &ES</option>
+                        <option>M.Sc. Molecular Medicine</option>
+                        <option>M.Sc. VLSI</option>
+                        <option>M.Sc. Embedded Electronics & IIoT</option>
+                        <option>M.Sc. Data science</option>
+                    </select>
+                </div>
+
+                <!-- Section Select (A-J) -->
+                <div class="form-group">
+                    <label class="form-label">SECTION</label>
+                    <select class="form-select" id="candidateSection">
+                        <option value="">-- SELECT SECTION --</option>
+                        <option>A</option>
+                        <option>B</option>
+                        <option>C</option>
+                        <option>D</option>
+                        <option>E</option>
+                        <option>F</option>
+                        <option>G</option>
+                        <option>H</option>
+                        <option>I</option>
+                        <option>J</option>
+                    </select>
+                </div>
+
+                <!-- Year Select -->
+                <div class="form-group">
+                    <label class="form-label">YEAR</label>
+                    <select class="form-select" id="candidateYear">
+                        <option value="">-- SELECT YEAR --</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                    </select>
                 </div>
 
                 <div class="candidate-list" id="candidateList">
-                    <div class="candidate-item">
-                        <div class="candidate-info">
-                            <div class="candidate-id">ID-001</div>
-                            <div class="candidate-avatar">👨</div>
-                            <div class="candidate-details">
-                                <h4>Rahul Sharma</h4>
-                                <p>Leadership through action</p>
-                            </div>
-                        </div>
-                        <div class="candidate-actions">
-                            <button class="btn-icon" onclick="editCandidate('Rahul')">✎</button>
-                            <button class="btn-icon danger" onclick="deleteCandidate('Rahul')">✕</button>
-                        </div>
-                    </div>
-
-                    <div class="candidate-item">
-                        <div class="candidate-info">
-                            <div class="candidate-id">ID-002</div>
-                            <div class="candidate-avatar">👩</div>
-                            <div class="candidate-details">
-                                <h4>Sanya Patel</h4>
-                                <p>Voice for every student</p>
-                            </div>
-                        </div>
-                        <div class="candidate-actions">
-                            <button class="btn-icon" onclick="editCandidate('Sanya')">✎</button>
-                            <button class="btn-icon danger" onclick="deleteCandidate('Sanya')">✕</button>
-                        </div>
-                    </div>
-
-                    <div class="candidate-item">
-                        <div class="candidate-info">
-                            <div class="candidate-id">ID-003</div>
-                            <div class="candidate-avatar">👨</div>
-                            <div class="candidate-details">
-                                <h4>Arjun Kumar</h4>
-                                <p>Progress and unity</p>
-                            </div>
-                        </div>
-                        <div class="candidate-actions">
-                            <button class="btn-icon" onclick="editCandidate('Arjun')">✎</button>
-                            <button class="btn-icon danger" onclick="deleteCandidate('Arjun')">✕</button>
-                        </div>
-                    </div>
-
-                    <div class="candidate-item">
-                        <div class="candidate-info">
-                            <div class="candidate-id">ID-004</div>
-                            <div class="candidate-avatar">👩</div>
-                            <div class="candidate-details">
-                                <h4>Priya Singh</h4>
-                                <p>Innovation meets tradition</p>
-                            </div>
-                        </div>
-                        <div class="candidate-actions">
-                            <button class="btn-icon" onclick="editCandidate('Priya')">✎</button>
-                            <button class="btn-icon danger" onclick="deleteCandidate('Priya')">✕</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Live Results -->
-            <!-- <div class="panel">
-                <div class="panel-header">
-                    <h2 class="panel-title">LIVE ANALYTICS</h2>
-                </div>
-
-                <div class="results-table">
-                    <div class="table-header">
-                        <span>CANDIDATE</span>
-                        <span>VOTES</span>
-                        <span>PERCENT</span>
-                        <span>TREND</span>
-                    </div>
-
-                    <div class="table-row">
-                        <span>Rahul Sharma</span>
-                        <span>89</span>
-                        <span>35%</span>
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: 35%"></div>
-                        </div>
-                    </div>
-
-                    <div class="table-row">
-                        <span>Sanya Patel</span>
-                        <span>71</span>
-                        <span>28%</span>
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: 28%"></div>
-                        </div>
-                    </div>
-
-                    <div class="table-row">
-                        <span>Arjun Kumar</span>
-                        <span>56</span>
-                        <span>22%</span>
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: 22%"></div>
-                        </div>
-                    </div>
-
-                    <div class="table-row">
-                        <span>Priya Singh</span>
-                        <span>38</span>
-                        <span>15%</span>
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: 15%"></div>
-                        </div>
+                    <div style="text-align: center; padding: 60px 40px; color: #606060;">
+                        <div style="font-size: 48px; margin-bottom: 20px; opacity: 0.3;">📋</div>
+                        <p style="font-size: 16px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px; color: #8ab452;">LOADING CANDIDATES</p>
+                        <p style="font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">Please wait...</p>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
-         Control Panel -->
-        <!-- <div class="panel">
-            <div class="panel-header">
-                <h2 class="panel-title">SYSTEM CONTROLS</h2>
+    <!-- Add Candidate Modal -->
+    <div class="modal" id="addCandidateModal">
+        <div class="modal-content" style="max-width: 900px; max-height: 90vh; overflow-y: auto;">
+            <div class="modal-header">
+                <h2 class="modal-title" id="modalTitle">REGISTER NEW CANDIDATE</h2>
+                <button class="close-btn" onclick="closeAddModal()">×</button>
             </div>
+            <form id="candidateForm">
+                <!-- Two Column Layout -->
+                <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 30px; align-items: start;">
 
-            <div class="control-grid">
-                <button class="control-btn" onclick="alert('Exporting election results...')">
-                    <span>📥</span> EXPORT RESULTS
-                </button>
-                <button class="control-btn" onclick="alert('Opening voting system...')">
-                    <span>🔓</span> OPEN VOTING
-                </button>
-                <button class="control-btn" onclick="alert('Closing voting system...')">
-                    <span>🔒</span> CLOSE VOTING
-                </button>
-                <button class="control-btn danger" onclick="if(confirm('Reset all votes? This cannot be undone.')) alert('Election reset complete.')">
-                    <span>⟲</span> RESET ELECTION
-                </button>
+                    <!-- Left Column - Photo -->
+                    <div>
+                        <div class="form-group" id="photoContainer" style="display: none; text-align: center;">
+                            <label class="form-label">PHOTO</label>
+                            <img id="candidatePhoto" src="" alt="Candidate Photo"
+                                style="width: 100%; max-width: 250px; height: auto; object-fit: cover; border: 2px solid #8ab452; clip-path: polygon(15px 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%, 0 15px);">
+                        </div>
+                        <div id="photoPlaceholder"
+                            style="text-align: center; padding: 40px 20px; border: 1px dashed rgba(138, 180, 82, 0.3); clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);">
+                            <p style="color: #606060; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">
+                                Photo will appear here<br>after entering SIC</p>
+                        </div>
+                    </div>
+
+                    <!-- Right Column - Form Fields -->
+                    <div>
+                        <!-- SIC Input (Mandatory) -->
+                        <div class="form-group">
+                            <label class="form-label">SIC <span style="color: #ff4757;">*</span></label>
+                            <input type="text" class="form-input" id="candidateSic"
+                                placeholder="Enter Student Identification Code" required>
+                            <div id="sicError" style="color: #ff4757; font-size: 11px; margin-top: 8px; display: none;">
+                            </div>
+                        </div>
+
+                        <!-- Registration Code (Auto-fetched, Read-only) -->
+                        <div class="form-group">
+                            <label class="form-label">REGISTRATION CODE</label>
+                            <input type="text" class="form-input" id="candidateRegCode" placeholder="Not generated yet"
+                                readonly style="background: rgba(138, 180, 82, 0.02); cursor: not-allowed;">
+                        </div>
+
+                        <!-- Name (Auto-fetched, Read-only) -->
+                        <div class="form-group">
+                            <label class="form-label">NAME</label>
+                            <input type="text" class="form-input" id="candidateName" placeholder="Will be auto-filled"
+                                readonly style="background: rgba(138, 180, 82, 0.02); cursor: not-allowed;">
+                        </div>
+
+                        <!-- Branch, Year, Section in a grid -->
+                        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px;">
+                            <!-- Branch (Auto-fetched, Read-only) -->
+                            <div class="form-group">
+                                <label class="form-label">BRANCH</label>
+                                <input type="text" class="form-input" id="candidateBranchInput" placeholder="Auto-fill"
+                                    readonly style="background: rgba(138, 180, 82, 0.02); cursor: not-allowed;">
+                            </div>
+
+                            <!-- Current Year (Auto-fetched, Read-only) -->
+                            <div class="form-group">
+                                <label class="form-label">YEAR</label>
+                                <input type="text" class="form-input" id="candidateYearInput" placeholder="Auto-fill"
+                                    readonly style="background: rgba(138, 180, 82, 0.02); cursor: not-allowed;">
+                            </div>
+
+                            <!-- Section (Auto-fetched, Read-only) -->
+                            <div class="form-group">
+                                <label class="form-label">SECTION</label>
+                                <input type="text" class="form-input" id="candidateSectionInput" placeholder="Auto-fill"
+                                    readonly style="background: rgba(138, 180, 82, 0.02); cursor: not-allowed;">
+                            </div>
+                        </div>
+                        
+                        <!-- Hidden field to track eligibility (checked on submit) -->
+                        <input type="hidden" id="isEligible" value="false">
+                    </div>
+                </div>
+
+                <!-- Motivation (Full Width, Mandatory) -->
+                <div class="form-group" style="margin-top: 20px;">
+                    <label class="form-label">WHY DO YOU WANT TO BE A CLASS REPRESENTATIVE? <span
+                            style="color: #ff4757;">*</span></label>
+                    <textarea class="form-input" id="candidateMotiv"
+                        placeholder="Describe your motivation and vision..." rows="4" required
+                        style="resize: vertical; min-height: 100px;"></textarea>
+                </div>
+
+                <button type="button" class="btn-submit" id="modalSubmitBtn" onclick="handleCandidateSubmit()">SUBMIT
+                    CANDIDATE</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Reset Confirmation Modal -->
+    <div class="modal" id="resetModal">
+        <div class="modal-content" style="max-width: 600px;">
+            <div class="modal-header">
+                <h2 class="modal-title" style="color: #ff4757;">⚠ RESET DATABASE</h2>
+                <button class="close-btn" onclick="closeResetModal()">×</button>
+            </div>
+            
+            <div id="resetWarning">
+                <div style="background: rgba(255, 71, 87, 0.1); border: 1px solid #ff4757; padding: 20px; margin-bottom: 20px; clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);">
+                    <p style="color: #ff4757; font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 15px;">⚠ WARNING: THIS ACTION CANNOT BE UNDONE!</p>
+                    
+                    <div style="margin-bottom: 15px;">
+                        <p style="color: #ffffff; font-size: 13px; font-weight: 700; margin-bottom: 8px;">📝 NOTE 1: VOTING STATUS RESET</p>
+                        <p style="color: #cccccc; font-size: 12px; line-height: 1.6;">All students who have voted will be marked as "NOT VOTED". The <code style="background: rgba(138, 180, 82, 0.2); padding: 2px 6px; border-radius: 3px;">isvoted</code> column in the students table will be reset to 0.</p>
+                    </div>
+                    
+                    <div style="margin-bottom: 15px;">
+                        <p style="color: #ffffff; font-size: 13px; font-weight: 700; margin-bottom: 8px;">🗑️ NOTE 2: ALL CANDIDATES DELETED</p>
+                        <p style="color: #cccccc; font-size: 12px; line-height: 1.6;">All registered candidates will be permanently removed from the database. This includes their motivation statements and vote counts.</p>
+                    </div>
+                    
+                    <div>
+                        <p style="color: #ff4757; font-size: 13px; font-weight: 700; margin-bottom: 8px;">🚫 NOTE 3: NO UNDO OPTION</p>
+                        <p style="color: #cccccc; font-size: 12px; line-height: 1.6;">Once you confirm this action, there is NO WAY to recover the deleted data. Make sure you have a backup if needed.</p>
+                    </div>
+                </div>
+                
+                <button class="btn-submit" style="background: #ff4757;" onclick="showConfirmationInput()">I UNDERSTAND, PROCEED</button>
+            </div>
+            
+            <div id="resetConfirmation" style="display: none;">
+                <p style="color: #ffffff; font-size: 13px; margin-bottom: 15px; line-height: 1.6;">To confirm this action, please type the following phrase exactly as shown:</p>
+                
+                <div style="background: rgba(138, 180, 82, 0.1); border: 1px solid #8ab452; padding: 15px; margin-bottom: 20px; text-align: center; clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);">
+                    <code style="color: #8ab452; font-size: 14px; font-weight: 700;">I am aware of the notes and I want to reset the dataset</code>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">TYPE CONFIRMATION PHRASE</label>
+                    <input type="text" class="form-input" id="resetConfirmationText" placeholder="Type the phrase here..." autocomplete="off">
+                    <p id="confirmationError" style="color: #ff4757; font-size: 11px; margin-top: 8px; display: none;">The phrase doesn't match. Please type it exactly as shown above.</p>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                    <button class="btn-submit" style="background: #606060;" onclick="closeResetModal()">CANCEL</button>
+                    <button class="btn-submit" style="background: #ff4757;" onclick="executeReset()">RESET DATABASE</button>
+                </div>
             </div>
         </div>
-    </div> -->
+    </div>
 
-    <!-- Add Candidate
+    <!-- Promote Students Modal -->
+    <div class="modal" id="promoteModal">
+        <div class="modal-content" style="max-width: 600px;">
+            <div class="modal-header">
+                <h2 class="modal-title" style="color: #8ab452;">📚 PROMOTE STUDENTS</h2>
+                <button class="close-btn" onclick="closePromoteModal()">×</button>
+            </div>
+            
+            <div id="promoteFilters">
+                <p style="color: #ffffff; font-size: 13px; margin-bottom: 20px; line-height: 1.6;">Select filters to promote specific students, or leave all filters empty to promote ALL students:</p>
+                
+                <!-- Branch Filter -->
+                <div class="form-group">
+                    <label class="form-label">BRANCH (OPTIONAL)</label>
+                    <select class="form-select" id="promoteBranch" style="background: rgba(138, 180, 82, 0.1); color: #8ab452;">
+                        <option value="">-- ALL BRANCHES --</option>
+                        <option>CSE</option>
+                        <option>ECE</option>
+                        <option>EEE</option>
+                        <option>EIE</option>
+                        <option>CST</option>
+                        <option>CEN</option>
+                        <option>VLSI</option>
+                        <option>IMCA</option>
+                        <option>MCA</option>
+                        <option>M.Tech CSE</option>
+                        <option>M.Tech ECE</option>
+                        <option>M.Tech PE &ES</option>
+                        <option>M.Sc. Molecular Medicine</option>
+                        <option>M.Sc. VLSI</option>
+                        <option>M.Sc. Embedded Electronics & IIoT</option>
+                        <option>M.Sc. Data science</option>
+                    </select>
+                </div>
+
+                <!-- Section Filter -->
+                <div class="form-group">
+                    <label class="form-label">SECTION (OPTIONAL)</label>
+                    <select class="form-select" id="promoteSection" style="background: rgba(138, 180, 82, 0.1); color: #8ab452;">
+                        <option value="">-- ALL SECTIONS --</option>
+                        <option>A</option>
+                        <option>B</option>
+                        <option>C</option>
+                        <option>D</option>
+                        <option>E</option>
+                        <option>F</option>
+                        <option>G</option>
+                        <option>H</option>
+                        <option>I</option>
+                        <option>J</option>
+                    </select>
+                </div>
+
+                <!-- Year Filter -->
+                <div class="form-group">
+                    <label class="form-label">CURRENT YEAR (OPTIONAL)</label>
+                    <select class="form-select" id="promoteYear" style="background: rgba(138, 180, 82, 0.1); color: #8ab452;">
+                        <option value="">-- ALL YEARS --</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                    </select>
+                </div>
+
+                <div style="background: rgba(138, 180, 82, 0.1); border: 1px solid #8ab452; padding: 15px; margin-bottom: 20px; clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);">
+                    <p style="color: #8ab452; font-size: 12px; font-weight: 700; margin-bottom: 8px;">ℹ️ NOTE:</p>
+                    <p style="color: #cccccc; font-size: 11px; line-height: 1.6;">If you want to promote ALL students by one year, do not select any of the above dropdowns and just click the NEXT button below.</p>
+                </div>
+                
+                <button class="btn-submit" onclick="showPromoteConfirmation()">NEXT</button>
+            </div>
+            
+            <div id="promoteWarning" style="display: none;">
+                <div style="background: rgba(255, 165, 0, 0.1); border: 1px solid #ffa500; padding: 20px; margin-bottom: 20px; clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);">
+                    <p style="color: #ffa500; font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 15px;">⚠ CONFIRMATION REQUIRED</p>
+                    
+                    <p id="promoteConfirmText" style="color: #ffffff; font-size: 13px; font-weight: 700; margin-bottom: 15px;"></p>
+                    
+                    <div style="margin-top: 15px;">
+                        <p style="color: #ffa500; font-size: 13px; font-weight: 700; margin-bottom: 8px;">🚫 NOTE: THIS ACTION CANNOT BE UNDONE</p>
+                        <p style="color: #cccccc; font-size: 12px; line-height: 1.6;">Once students are promoted to the next year, this action cannot be reversed. Make sure you have verified the selection before proceeding.</p>
+                    </div>
+                </div>
+                
+                <button class="btn-submit" style="background: #ffa500;" onclick="showPromoteTextInput()">I UNDERSTAND, PROCEED</button>
+            </div>
+            
+            <div id="promoteConfirmation" style="display: none;">
+                <p style="color: #ffffff; font-size: 13px; margin-bottom: 15px; line-height: 1.6;">To confirm this action, please type the following phrase exactly as shown:</p>
+                
+                <div style="background: rgba(138, 180, 82, 0.1); border: 1px solid #8ab452; padding: 15px; margin-bottom: 20px; text-align: center; clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);">
+                    <code style="color: #8ab452; font-size: 14px; font-weight: 700;">I am aware of the notes and I want to promote those students</code>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">TYPE CONFIRMATION PHRASE</label>
+                    <input type="text" class="form-input" id="promoteConfirmationText" placeholder="Type the phrase here..." autocomplete="off">
+                    <p id="promoteConfirmationError" style="color: #ff4757; font-size: 11px; margin-top: 8px; display: none;">The phrase doesn't match. Please type it exactly as shown above.</p>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                    <button class="btn-submit" style="background: #606060;" onclick="closePromoteModal()">CANCEL</button>
+                    <button class="btn-submit" style="background: #8ab452;" onclick="executePromote()">PROMOTE STUDENTS</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Delete Data Modal -->
+    <div class="modal" id="deleteDataModal">
+        <div class="modal-content" style="max-width: 600px;">
+            <div class="modal-header">
+                <h2 class="modal-title" style="color: #ff4757;">🗑️ DELETE DATA</h2>
+                <button class="close-btn" onclick="closeDeleteDataModal()">×</button>
+            </div>
+            
+            <div id="deleteFilters">
+                <p style="color: #ffffff; font-size: 13px; margin-bottom: 20px; line-height: 1.6;">Select filters to delete specific students and candidates, or leave all filters empty to delete ALL data:</p>
+                
+                <!-- Branch Filter -->
+                <div class="form-group">
+                    <label class="form-label">BRANCH (OPTIONAL)</label>
+                    <select class="form-select" id="deleteBranch" style="background: rgba(138, 180, 82, 0.1); color: #8ab452;">
+                        <option value="">-- ALL BRANCHES --</option>
+                        <option>CSE</option>
+                        <option>ECE</option>
+                        <option>EEE</option>
+                        <option>EIE</option>
+                        <option>CST</option>
+                        <option>CEN</option>
+                        <option>VLSI</option>
+                        <option>IMCA</option>
+                        <option>MCA</option>
+                        <option>M.Tech CSE</option>
+                        <option>M.Tech ECE</option>
+                        <option>M.Tech PE &ES</option>
+                        <option>M.Sc. Molecular Medicine</option>
+                        <option>M.Sc. VLSI</option>
+                        <option>M.Sc. Embedded Electronics & IIoT</option>
+                        <option>M.Sc. Data science</option>
+                    </select>
+                </div>
+
+                <!-- Section Filter -->
+                <div class="form-group">
+                    <label class="form-label">SECTION (OPTIONAL)</label>
+                    <select class="form-select" id="deleteSection" style="background: rgba(138, 180, 82, 0.1); color: #8ab452;">
+                        <option value="">-- ALL SECTIONS --</option>
+                        <option>A</option>
+                        <option>B</option>
+                        <option>C</option>
+                        <option>D</option>
+                        <option>E</option>
+                        <option>F</option>
+                        <option>G</option>
+                        <option>H</option>
+                        <option>I</option>
+                        <option>J</option>
+                    </select>
+                </div>
+
+                <!-- Year Filter -->
+                <div class="form-group">
+                    <label class="form-label">YEAR (OPTIONAL)</label>
+                    <select class="form-select" id="deleteYear" style="background: rgba(138, 180, 82, 0.1); color: #8ab452;">
+                        <option value="">-- ALL YEARS --</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                    </select>
+                </div>
+
+                <div style="background: rgba(255, 71, 87, 0.1); border: 1px solid #ff4757; padding: 15px; margin-bottom: 20px; clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);">
+                    <p style="color: #ff4757; font-size: 12px; font-weight: 700; margin-bottom: 8px;">⚠️ IMPORTANT NOTE:</p>
+                    <p style="color: #cccccc; font-size: 11px; line-height: 1.6;">If you do not select any of the above options, the <strong style="color: #ff4757;">ENTIRE students and candidates database will be cleared</strong>. If you select any of the above options, only the students and candidates matching the selected criteria will be deleted.</p>
+                </div>
+                
+                <button class="btn-submit" style="background: #ff4757;" onclick="showDeleteWarning()">NEXT</button>
+            </div>
+            
+            <div id="deleteWarning" style="display: none;">
+                <div style="background: rgba(255, 71, 87, 0.1); border: 1px solid #ff4757; padding: 20px; margin-bottom: 20px; clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);">
+                    <p style="color: #ff4757; font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 15px;">⚠ CRITICAL WARNING</p>
+                    
+                    <p id="deleteConfirmText" style="color: #ffffff; font-size: 13px; font-weight: 700; margin-bottom: 15px;"></p>
+                    
+                    <div style="margin-top: 15px;">
+                        <p style="color: #ff4757; font-size: 13px; font-weight: 700; margin-bottom: 8px;">🚫 NOTE: THIS ACTION CANNOT BE UNDONE</p>
+                        <p style="color: #cccccc; font-size: 12px; line-height: 1.6;">Once data is deleted, it cannot be recovered. Make absolutely sure you want to proceed with this action.</p>
+                    </div>
+                </div>
+                
+                <button class="btn-submit" style="background: #ff4757;" onclick="showDeleteTextInput()">I UNDERSTAND, PROCEED</button>
+            </div>
+            
+            <div id="deleteConfirmation" style="display: none;">
+                <p style="color: #ffffff; font-size: 13px; margin-bottom: 15px; line-height: 1.6;">To confirm this action, please type the following phrase exactly as shown:</p>
+                
+                <div style="background: rgba(138, 180, 82, 0.1); border: 1px solid #8ab452; padding: 15px; margin-bottom: 20px; text-align: center; clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);">
+                    <code style="color: #8ab452; font-size: 14px; font-weight: 700;">I want to delete the data and I know this cannot be undone</code>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">TYPE CONFIRMATION PHRASE</label>
+                    <input type="text" class="form-input" id="deleteConfirmationText" placeholder="Type the phrase here..." autocomplete="off">
+                    <p id="deleteConfirmationError" style="color: #ff4757; font-size: 11px; margin-top: 8px; display: none;">The phrase doesn't match. Please type it exactly as shown above.</p>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                    <button class="btn-submit" style="background: #606060;" onclick="closeDeleteDataModal()">CANCEL</button>
+                    <button class="btn-submit" style="background: #ff4757;" onclick="executeDelete()">DELETE DATA</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Results Selection Modal -->
+    <div class="modal" id="resultsModal">
+        <div class="modal-content" style="max-width: 600px;">
+            <div class="modal-header">
+                <h2 class="modal-title">🏆 VIEW RESULTS</h2>
+                <button class="close-btn" onclick="closeResultsModal()">×</button>
+            </div>
+            
+            <p style="color: #ffffff; font-size: 13px; margin-bottom: 20px; line-height: 1.6;">Select the branch, section, and year to view the winning candidate:</p>
+            
+            <!-- Branch Filter -->
+            <div class="form-group">
+                <label class="form-label">BRANCH <span style="color: #ff4757;">*</span></label>
+                <select class="form-select" id="resultsBranch" style="background: rgba(138, 180, 82, 0.1); color: #8ab452;">
+                    <option value="">-- SELECT BRANCH --</option>
+                    <option>CSE</option>
+                    <option>ECE</option>
+                    <option>EEE</option>
+                    <option>EIE</option>
+                    <option>CST</option>
+                    <option>CEN</option>
+                    <option>VLSI</option>
+                    <option>IMCA</option>
+                    <option>MCA</option>
+                    <option>M.Tech CSE</option>
+                    <option>M.Tech ECE</option>
+                    <option>M.Tech PE &ES</option>
+                    <option>M.Sc. Molecular Medicine</option>
+                    <option>M.Sc. VLSI</option>
+                    <option>M.Sc. Embedded Electronics & IIoT</option>
+                    <option>M.Sc. Data science</option>
+                </select>
+            </div>
+
+            <!-- Section Filter -->
+            <div class="form-group">
+                <label class="form-label">SECTION <span style="color: #ff4757;">*</span></label>
+                <select class="form-select" id="resultsSection" style="background: rgba(138, 180, 82, 0.1); color: #8ab452;">
+                    <option value="">-- SELECT SECTION --</option>
+                    <option>A</option>
+                    <option>B</option>
+                    <option>C</option>
+                    <option>D</option>
+                    <option>E</option>
+                    <option>F</option>
+                    <option>G</option>
+                    <option>H</option>
+                    <option>I</option>
+                    <option>J</option>
+                </select>
+            </div>
+
+            <!-- Year Filter -->
+            <div class="form-group">
+                <label class="form-label">YEAR <span style="color: #ff4757;">*</span></label>
+                <select class="form-select" id="resultsYear" style="background: rgba(138, 180, 82, 0.1); color: #8ab452;">
+                    <option value="">-- SELECT YEAR --</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                </select>
+            </div>
+            
+            <button class="btn-submit" onclick="fetchWinner()">SHOW RESULTS</button>
+        </div>
+    </div>
+
+    <!-- Tie Breaking Modal -->
+    <div class="modal" id="tieBreakModal">
+        <div class="modal-content tie-modal" style="max-width: 800px;">
+            <div class="modal-header">
+                <h2 class="modal-title" style="color: #ffa500;">⚖️ TIE DETECTED</h2>
+                <button class="close-btn" onclick="closeTieBreakModal()">×</button>
+            </div>
+            
+            <div style="background: rgba(255, 165, 0, 0.1); border: 1px solid #ffa500; padding: 20px; margin-bottom: 20px; clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);">
+                <p style="color: #ffa500; font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px;">⚠ EQUAL VOTES DETECTED</p>
+                <p style="color: #ffffff; font-size: 13px; line-height: 1.6;">Multiple candidates have received equal votes. Please enter their CGPA to determine the winner. The candidate with the highest CGPA will be declared the winner.</p>
+            </div>
+            
+            <div id="tiedCandidatesList"></div>
+            
+            <button class="btn-submit" onclick="determineTieWinner()">DETERMINE WINNER</button>
+        </div>
+    </div>
+
+    <!-- Certificate Overlay -->
+    <div class="certificate-overlay" id="certificateOverlay">
+        <button class="close-certificate" onclick="closeCertificate()">✕ CLOSE</button>
+        
+        <!-- Countdown Container -->
+        <div class="countdown-container" id="countdownContainer">
+            <div class="countdown-number" id="countdownNumber">5</div>
+        </div>
+        
+        <!-- Certificate Container -->
+        <div class="certificate-container" id="certificateContainer">
+            <div class="certificate-header">
+                <div class="certificate-logo">ELECT THE BEST</div>
+                <p class="certificate-subtitle">UNIFIED CAMPUS VOTING</p>
+                <div class="certificate-title">CERTIFICATE OF ELECTION</div>
+            </div>
+            
+            <div class="certificate-body">
+                <div class="photo-frame">
+                    <img id="winnerPhoto" src="" alt="Winner Photo" class="winner-photo">
+                </div>
+                
+                <div class="winner-details">
+                    <p class="certificate-text">
+                        This is to certify that <span class="highlight" id="winnerName">CANDIDATE NAME</span>, 
+                        bearing SIC <span class="highlight" id="winnerSic">SIC NUMBER</span>, 
+                        of <span class="highlight" id="winnerBranch">BRANCH</span> branch, 
+                        Section <span class="highlight" id="winnerSection">SECTION</span>, 
+                        Year <span class="highlight" id="winnerYear">YEAR</span>, 
+                        has been successfully elected as the <span class="highlight">CLASS REPRESENTATIVE</span>.
+                    </p>
+                    
+                    <div class="vote-stats">
+                        <p class="vote-stats-label">TOTAL VOTES SECURED</p>
+                        <div class="vote-number" id="winnerVotes">0</div>
+                        <p style="color: #ffffff; font-size: 13px; margin-top: 10px;" id="voteMargin"></p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="certificate-footer">
+                <p class="verified-by">Verified By</p>
+                <div class="website-name">ELECT THE BEST</div>
+                <p style="color: #808080; font-size: 11px; margin-top: 8px; text-transform: uppercase; letter-spacing: 1px;">Official CR Election Platform</p>
+                <div class="verification-badge">
+                    SECURE VOTING VERIFIED 2024
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
+

@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CR ELECTION SYSTEM</title>
+    <title>ElectTheBest</title>
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700;800;900&display=swap");
 
@@ -679,28 +679,7 @@
       <div class="hero-bg"></div>
       <div class="scan-line"></div>
 
-      <div class="system-status">
-        <div class="status-item">
-          <div class="status-indicator"></div>
-          <span>PARALLEL_ENGINES:</span>
-          <span class="status-value">ONLINE</span>
-        </div>
-        <div class="status-item">
-          <div class="status-indicator"></div>
-          <span>NEURAL_SCOPE:</span>
-          <span class="status-value">SYNCED</span>
-        </div>
-        <div class="status-item">
-          <div class="status-indicator"></div>
-          <span>SHIELDING_LAYERS:</span>
-          <span class="status-value">ACTIVE</span>
-        </div>
-        <div class="status-item">
-          <div class="status-indicator"></div>
-          <span>READINESS_STATUS:</span>
-          <span class="status-value">100.000</span>
-        </div>
-      </div>
+
 
       <div class="hero-content">
         <div class="status-text">CR ELECTION PROTOCOL INITIALIZED</div>
@@ -786,19 +765,19 @@
       <div class="stats-container">
         <div class="stats-grid">
           <div class="stat-card">
-            <span class="stat-number" data-target="500">000</span>
+            <span class="stat-number" data-target="0">000</span>
             <span class="stat-label">TOTAL STUDENTS</span>
           </div>
           <div class="stat-card">
-            <span class="stat-number" data-target="12">00</span>
+            <span class="stat-number" data-target="0">00</span>
             <span class="stat-label">CANDIDATES</span>
           </div>
           <div class="stat-card">
-            <span class="stat-number" data-target="3">0</span>
+            <span class="stat-number" data-target="0">0</span>
             <span class="stat-label">SECTIONS</span>
           </div>
           <div class="stat-card">
-            <span class="stat-number" data-target="85">00</span>
+            <span class="stat-number" data-target="0">00</span>
             <span class="stat-label">PARTICIPATION %</span>
           </div>
         </div>
@@ -833,6 +812,55 @@
     </footer>
 
     <script>
+      // Fetch and display real statistics from database
+      async function loadStats() {
+        try {
+          console.log('Fetching stats from getStats.jsp...');
+          const response = await fetch('getStats.jsp');
+          console.log('Response status:', response.status);
+          
+          const text = await response.text();
+          console.log('Raw response:', text);
+          
+          const data = JSON.parse(text);
+          console.log('Parsed data:', data);
+          
+          if (data.success) {
+            console.log('Stats loaded successfully:', {
+              students: data.totalStudents,
+              candidates: data.totalCandidates,
+              sections: data.totalSections,
+              participation: data.participationPercentage
+            });
+            
+            // Update data-target attributes with real values
+            const statCards = document.querySelectorAll('.stat-card');
+            const statNumbers = document.querySelectorAll('.stat-number');
+            
+            statNumbers[0].setAttribute('data-target', data.totalStudents || 0);
+            statNumbers[1].setAttribute('data-target', data.totalCandidates || 0);
+            statNumbers[2].setAttribute('data-target', data.totalSections || 0);
+            statNumbers[3].setAttribute('data-target', data.participationPercentage || 0);
+            
+            // Trigger animation immediately after loading data
+            statNumbers.forEach((stat, index) => {
+              const target = parseInt(stat.getAttribute('data-target'));
+              console.log(`Animating stat ${index} to ${target}`);
+              animateValue(stat, 0, target, 2000);
+            });
+          } else {
+            console.error('Stats fetch failed:', data.error);
+            alert('Error loading stats: ' + (data.error || 'Unknown error'));
+          }
+        } catch (error) {
+          console.error('Error loading stats:', error);
+          alert('Error loading stats: ' + error.message);
+        }
+      }
+
+      // Load stats when page loads
+      window.addEventListener('DOMContentLoaded', loadStats);
+
       // Parallax effect
       window.addEventListener("scroll", () => {
         const scrolled = window.pageYOffset;
@@ -849,7 +877,16 @@
           if (!startTimestamp) startTimestamp = timestamp;
           const progress = Math.min((timestamp - startTimestamp) / duration, 1);
           const value = Math.floor(progress * (end - start) + start);
-          element.textContent = String(value).padStart(3, "0");
+          
+          // Format the number based on its size
+          if (end < 100) {
+            // For small numbers (like sections), show as-is with leading zeros only if < 10
+            element.textContent = value < 10 ? String(value).padStart(2, "0") : String(value);
+          } else {
+            // For larger numbers, pad to 3 digits
+            element.textContent = String(value).padStart(3, "0");
+          }
+          
           if (progress < 1) {
             window.requestAnimationFrame(step);
           }
@@ -857,27 +894,7 @@
         window.requestAnimationFrame(step);
       };
 
-      const observerOptions = {
-        threshold: 0.5,
-      };
 
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const statNumbers = entry.target.querySelectorAll(".stat-number");
-            statNumbers.forEach((stat) => {
-              const target = parseInt(stat.getAttribute("data-target"));
-              animateValue(stat, 0, target, 2000);
-            });
-            observer.unobserve(entry.target);
-          }
-        });
-      }, observerOptions);
-
-      const statsSection = document.querySelector(".stats");
-      if (statsSection) {
-        observer.observe(statsSection);
-      }
 
       // Fade in animation for feature cards
       const fadeElements = document.querySelectorAll(".feature-card");

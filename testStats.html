@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Stats API</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #1a1a1a;
+            color: #fff;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .stat-box {
+            background: #2a2a2a;
+            padding: 20px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border: 1px solid #8ab452;
+        }
+        .stat-label {
+            color: #8ab452;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .stat-value {
+            font-size: 24px;
+            color: #fff;
+        }
+        .error {
+            background: #ff4444;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        pre {
+            background: #0a0a0a;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Stats API Test</h1>
+        <div id="loading">Loading stats...</div>
+        <div id="results"></div>
+        <h2>Raw JSON Response:</h2>
+        <pre id="json"></pre>
+    </div>
+
+    <script>
+        async function testStats() {
+            try {
+                const response = await fetch('getStats.jsp');
+                const text = await response.text();
+                
+                document.getElementById('json').textContent = text;
+                
+                const data = JSON.parse(text);
+                
+                if (data.success) {
+                    document.getElementById('loading').style.display = 'none';
+                    document.getElementById('results').innerHTML = `
+                        <div class="stat-box">
+                            <div class="stat-label">Total Students</div>
+                            <div class="stat-value">${data.totalStudents}</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-label">Total Candidates</div>
+                            <div class="stat-value">${data.totalCandidates}</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-label">Total Sections</div>
+                            <div class="stat-value">${data.totalSections}</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-label">Participation Percentage</div>
+                            <div class="stat-value">${data.participationPercentage}%</div>
+                        </div>
+                    `;
+                } else {
+                    document.getElementById('loading').style.display = 'none';
+                    document.getElementById('results').innerHTML = `
+                        <div class="error">
+                            <h3>Error:</h3>
+                            <p>${data.error}</p>
+                        </div>
+                    `;
+                }
+            } catch (error) {
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('results').innerHTML = `
+                    <div class="error">
+                        <h3>Error loading stats:</h3>
+                        <p>${error.message}</p>
+                    </div>
+                `;
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', testStats);
+    </script>
+</body>
+</html>
