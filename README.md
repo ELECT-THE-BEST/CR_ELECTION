@@ -1706,27 +1706,3 @@ python app.py
 
 ---
 
-## 📝 NOTE FOR CONTRIBUTORS
-
-### **Adding Screenshots**
-
-To add actual screenshots to this README:
-
-1. Create a `screenshots` folder in the root directory of the repository
-2. Take screenshots of each page and save them with these exact names:
-   - `homepage_interface.png` - Landing page (index.html)
-   - `student_auth_page.png` - Student authentication page
-   - `admin_auth_page.png` - Admin authentication page
-   - `admin_dashboard.png` - Admin dashboard
-   - `voting_interface.png` - Voting page
-   - `winner_certificate.png` - Results/winner display
-3. Commit and push the screenshots folder to GitHub
-4. The images will automatically appear in the Screenshots section above
-
-**Screenshot Guidelines:**
-- Use PNG format for best quality
-- Recommended resolution: 1920x1080 or higher
-- Capture full page or relevant sections
-- Ensure no sensitive data is visible
-- Use browser's full-screen mode for clean captures
-
