@@ -25,6 +25,7 @@
 | **Lead Developer & Functionality** | Tarnala Sribatsa Patro | Complete system functionality, backend logic, database integration | [Portfolio](https://sribatsa.vercel.app) |
 | **UI/UX Designer** | Abhijeet Dash | Major UI design (index.html, studentAuth, adminAuth, admin, voting pages) | [GitHub](https://github.com/Abhijeet-Dashy) |
 | **CGPA Integration** | Subhasish Praharaj | Base structure for ERP CGPA extraction (app.py) | [GitHub](https://github.com/subhasish52) |
+| **Problem Statement & Deployment** | Swastik Bharadwaj | Problem statement, UI development help, Final project deployment | [GitHub](https://github.com/swastik7781) |
 
 </div>
 
@@ -339,34 +340,34 @@ CR_Election/
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│                     PRESENTATION LAYER                       │
+│                     PRESENTATION LAYER                      │
 │  (HTML + CSS + JavaScript - Client-Side Interface)          │
-│                                                              │
+│                                                             │
 │  • index.html          • studentAuth.html                   │
 │  • voting.html         • admin.html                         │
 │  • adminauth.html      • script.js                          │
-└──────────────────────────┬───────────────────────────────────┘
+└──────────────────────────┬──────────────────────────────────┘
                            │
                            ▼
 ┌─────────────────────────────────────────────────────────────┐
-│                     APPLICATION LAYER                        │
+│                     APPLICATION LAYER                       │
 │        (JSP - Server-Side Logic & Business Rules)           │
-│                                                              │
+│                                                             │
 │  • authenticateStudent.jsp    • castVote.jsp                │
 │  • getCandidates.jsp          • getStats.jsp                │
 │  • registerCandidate.jsp      • getWinner.jsp               │
 │  • promoteStudents.jsp        • upload.jsp                  │
-│                                                              │
+│                                                             │
 │  + Flask Microservice (app.py) for CGPA Verification        │
-└──────────────────────────┬───────────────────────────────────┘
+└──────────────────────────┬──────────────────────────────────┘
                            │
                            ▼
 ┌─────────────────────────────────────────────────────────────┐
-│                       DATA LAYER                             │
+│                       DATA LAYER                            │
 │              (MySQL Database - Data Persistence)            │
-│                                                              │
+│                                                             │
 │  Database: cr_election_db                                   │
-│  Tables:                                                     │
+│  Tables:                                                    │
 │    • students (SIC, name, branch, section, year, voted)     │
 │    • candidates (SIC, name, votes, image_url, motivation)   │
 └─────────────────────────────────────────────────────────────┘
@@ -1618,6 +1619,19 @@ This project was developed by a talented team of developers, each contributing t
 
 ---
 
+#### **🚀 Deployment & Strategy Lead**
+**Swastik Bharadwaj**
+- **Role**: Problem Statement, UI Development, Deployment
+- **Contributions**:
+  - Defined the core problem statement and project scope
+  - Assisted in UI/UX development and refinement
+  - Executed final project deployment and server configuration
+  - Strategic planning for system implementation
+- **GitHub**: [https://github.com/swastik7781](https://github.com/swastik7781)
+- **Expertise**: Project Management, Deployment, UI Development
+
+---
+
 ### **🌟 Project Highlights**
 
 - **Lines of Code**: 10,000+ across HTML, CSS, JavaScript, JSP, and Python
@@ -1652,6 +1666,7 @@ For queries, suggestions, or contributions:
 - **Lead Developer**: [Tarnala Sribatsa Patro](https://sribatsa.vercel.app)
 - **UI Designer**: [Abhijeet Dash](https://github.com/Abhijeet-Dashy)
 - **CGPA Integration**: [Subhasish Praharaj](https://github.com/subhasish52)
+- **Deployment & Strategy**: [Swastik Bharadwaj](https://github.com/swastik7781)
 
 ---
 
