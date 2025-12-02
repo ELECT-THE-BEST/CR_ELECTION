@@ -25,7 +25,7 @@
 | **Lead Developer & Functionality** | Tarnala Sribatsa Patro | Complete system functionality, backend logic, database integration | [Portfolio](https://sribatsa.vercel.app) |
 | **UI/UX Designer** | Abhijeet Dash | Major UI design (index.html, studentAuth, adminAuth, admin, voting pages) | [GitHub](https://github.com/Abhijeet-Dashy) |
 | **CGPA Integration** | Subhasish Praharaj | Base structure for ERP CGPA extraction (app.py) | [GitHub](https://github.com/subhasish52) |
-| **Problem Statement, UI & Deployment** | Swastik Bhardwaj | Problem statement, UI development help, Final project deployment | [GitHub](https://github.com/swastik7781) |
+| **Problem Statement, UI & Deployment** | Swastik Bhardwaj | Problem statement, UI development , Final project deployment | [GitHub](https://github.com/swastik7781) |
 
 </div>
 
